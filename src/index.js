@@ -54,7 +54,13 @@ const returnBackInSecond = (param) => {
 };
 
 const getDeepPropertiesCount = () => {};
-const createSerializedObject = () => {};
+const createSerializedObject = () => {
+    var str = new String("aa");
+    str.valueOf = function() {
+        return this.toString();
+    }
+    return str;
+};
 const toBuffer = () => {};
 const sortByProto = () => {};
 

@@ -86,7 +86,7 @@ describe(('You are awesome, aren\'t you?'), () => {
       if (n > 10) break;
     }
   });
-*/
+
   it('returnBackInSecond', (done) => {
     const param = 'param';
 
@@ -119,7 +119,7 @@ describe(('You are awesome, aren\'t you?'), () => {
       }
     }, 100); 
   });
-/*
+
   it('getDeepPropertiesCount', () => {
     const obj = {};
     let temp = obj;
@@ -146,14 +146,14 @@ describe(('You are awesome, aren\'t you?'), () => {
     const count2 = getDeepPropertiesCount(obj);
     assert.equal(count2, 700)
   });
-
+*/
   it('createSerializedObject', () => {
     const object = createSerializedObject();
 
     assert.equal(typeof object, 'object');
     assert.equal(JSON.parse(JSON.stringify(object)), object);
   });
-
+/*
   it('sortByProto', () => {
     const a = {};
     const b = {};
