@@ -15,7 +15,7 @@ const {
 } = require('./src/index');
 
 describe(('You are awesome, aren\'t you?'), () => {
-  it('createEnumerableProperty', async () => {
+  /*it('createEnumerableProperty', async () => {
     const propertyName = 'property';
     const propertyValue = 'value';
 
@@ -36,11 +36,11 @@ describe(('You are awesome, aren\'t you?'), () => {
     const object = {};
 
     object[property] = propertyValue;
-    
+
     assert.equal(Object.keys(object).length, 0);
     assert.equal(object[property], propertyValue);
   });
-/*
+
   it('createProtoMagicObject', () => {
     const magicObj = createProtoMagicObject();
 
@@ -86,7 +86,7 @@ describe(('You are awesome, aren\'t you?'), () => {
       if (n > 10) break;
     }
   });
-
+*/
   it('returnBackInSecond', (done) => {
     const param = 'param';
 
@@ -119,7 +119,7 @@ describe(('You are awesome, aren\'t you?'), () => {
       }
     }, 100); 
   });
-
+/*
   it('getDeepPropertiesCount', () => {
     const obj = {};
     let temp = obj;

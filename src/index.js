@@ -7,13 +7,52 @@ const createNotEnumerableProperty = (propertyName) => {
           get: function() { return this['shadowProp']; },
                                         enumerable: false});
                         return propertyName};
-const createProtoMagicObject = () => {};
-const incrementor = () => {};
-const asyncIncrementor = () => {};
-const createIncrementer = () => {};
+const createProtoMagicObject = () => { var x = function() {}; x.__proto__ = x.prototype; return x;};
+const incrementor = () => { 
+    if(!incrementor.counter) {
+        incrementor.counter = 0;
+    }
+    incrementor.valueOf = function() {
+        return incrementor.counter;
+    }
+    var inc = function() {
+        return incrementor();
+    }
+    inc.valueOf = function() {
+        return incrementor.counter;
+    }
+    incrementor.counter++;
+    return inc;
+};
+const asyncIncrementor = () => {
+    if(!asyncIncrementor.counter) {
+        asyncIncrementor.counter = 0;
+    }
+    asyncIncrementor.counter++;
+    return asyncIncrementor.counter;
+};
+const createIncrementer = () => {
+    var increm = {};
+    increm.val = 0;
+    increm.next = function() {
+        this.val++;
+        var nxt = { done: false, value: this.val };
+        return nxt;
+    }
+    increm[Symbol.iterator] = function*() {
+        return this.next();
+    }
+    return increm;
+};
 
 // return same argument not earlier than in one second, and not later, than in two
-const returnBackInSecond = () => {};
+const returnBackInSecond = (param) => {
+    var promise = new Promise((resolve, reject) => {
+        setTimeout(function() { resolve(param); }, 1010);    
+    });
+    return promise;
+};
+
 const getDeepPropertiesCount = () => {};
 const createSerializedObject = () => {};
 const toBuffer = () => {};
