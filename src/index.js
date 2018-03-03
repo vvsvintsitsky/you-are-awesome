@@ -53,16 +53,43 @@ const returnBackInSecond = (param) => {
     return promise;
 };
 
-const getDeepPropertiesCount = () => {};
+const getDeepPropertiesCount = (obj) => {
+    var count = 0;
+    var multiPropArray = [];
+    multiPropArray.push(obj);
+    var temp;
+    for(let element of multiPropArray) {
+        var iPropArray = Object.values(element);
+        var j = iPropArray.length;
+        for(let i = 0; i < iPropArray.length; i++) {
+            if(Object.values(iPropArray[i]) != 0) {
+                multiPropArray.push(iPropArray[i]);
+                j--;
+            }
+        }
+        count = count + 1 + j;
+    }
+    return --count;
+};
 const createSerializedObject = () => {
-    var str = new String("aa");
+    var str = new String();
     str.valueOf = function() {
         return this.toString();
     }
     return str;
 };
 const toBuffer = () => {};
-const sortByProto = () => {};
+const sortByProto = (objectArray) => {
+    return objectArray.sort(function(left, right) {
+         while(left.__proto__ !== null) {
+            if(left.__proto__ === right) {
+                return -1;
+            }
+            left = left.__proto__;
+        }
+        return 1;
+    });
+};
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;

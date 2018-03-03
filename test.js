@@ -15,7 +15,7 @@ const {
 } = require('./src/index');
 
 describe(('You are awesome, aren\'t you?'), () => {
-  /*it('createEnumerableProperty', async () => {
+  it('createEnumerableProperty', async () => {
     const propertyName = 'property';
     const propertyValue = 'value';
 
@@ -128,7 +128,7 @@ describe(('You are awesome, aren\'t you?'), () => {
       temp[i][i - 1] = {};
       temp[i][i] = {};
       temp[i][i + 1] = {};
-
+      //console.log(Object.values(temp));
       temp = temp[i][i];
     }
 
@@ -146,14 +146,14 @@ describe(('You are awesome, aren\'t you?'), () => {
     const count2 = getDeepPropertiesCount(obj);
     assert.equal(count2, 700)
   });
-*/
+
   it('createSerializedObject', () => {
     const object = createSerializedObject();
 
     assert.equal(typeof object, 'object');
     assert.equal(JSON.parse(JSON.stringify(object)), object);
   });
-/*
+
   it('sortByProto', () => {
     const a = {};
     const b = {};
@@ -172,10 +172,11 @@ describe(('You are awesome, aren\'t you?'), () => {
     f.__proto__ = g;
     g.__proto__ = h;
     
+
     let arr = sortByProto([d, b, h, a]);
     assert.deepEqual(arr, [a, b, d, h]);
 
     arr = sortByProto([e, c, d, h]);
     assert.deepEqual(arr, [c, d, e, h]);
-  });*/
+  });
 });
